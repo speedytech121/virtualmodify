@@ -1,0 +1,8 @@
+asgiref==3.7.2
+Django==3.2.21
+django-phonenumber-field==7.1.0
+phonenumbers==8.13.20
+Pillow==9.5.0
+pytz==2023.3.post1
+sqlparse==0.4.4
+typing-extensions==4.7.1

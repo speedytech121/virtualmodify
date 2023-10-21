@@ -1,0 +1,1778 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<!-- Mirrored from html.ditsolution.net/itsoft/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Sep 2023 12:22:35 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Virtual Modify</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="56x56" href="{% static 'assets/images/fav-icon/icon.png' %}">
+    <!-- bootstrap CSS -->
+    {% comment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+    {% endcomment %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" media="all"/>
+    <!-- Jquery UI Tab css -->
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}" type="text/css" media="all">
+    <!-- Uikit  CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.min.css' %}" type="text/css" media="all"/>
+    <!-- carousel CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" type="text/css" media="all"/>
+    <!-- responsive CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" type="text/css" media="all"/>
+    <!-- nivo-slider CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/nivo-slider.css' %}" type="text/css" media="all"/>
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" type="text/css" media="all"/>
+    <!-- animated-text CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/animated-text.css' %}" type="text/css" media="all"/>
+    <!-- font-awesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}" type="text/css" media="all"/>
+    <!-- font-flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}" type="text/css" media="all"/>
+    <!-- theme-default CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/theme-default.css' %}" type="text/css" media="all"/>
+    <!-- meanmenu CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}" type="text/css" media="all"/>
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css" media="all"/>
+    <!-- transitions CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.transitions.css' %}" type="text/css" media="all"/>
+    <!-- venobox CSS -->
+    <link rel="stylesheet" href="{% static 'assets/venobox/venobox.css' %}" type="text/css" media="all"/>
+    <!-- widget CSS -->
+    <link rel="stylesheet" href="{%static 'assets/css/widget.css' %}" type="text/css" media="all"/>
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="{%static 'assets/css/swiper.min.css'%}" type="text/css" media="all">
+    
+    
+
+    <!-- modernizr js -->
+    <script type="text/javascript" src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+
+    <!--    pricing css -->
+    <style>
+        /* Apply red text color to headings */
+        #pricingtable h2, #pricingtable h4 {
+            color: red;
+        }
+
+        /* Apply black text color to price and list items */
+        #pricingtable .price, #pricingtable .list-group-item {
+            color: black;
+        }
+
+     /* Additional styling for the "Most Popular" card */
+        #pricingtable .most-popular {
+            /* Add any specific styles for the most popular card here */
+        }
+        .scroll-container {
+            height: 300px; /* Adjust the height as needed */
+            overflow-y: auto;
+        }
+        /* Style for the popup container */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            z-index: 2; /* Increase the z-index value */
+        }
+
+        /* Style for the popup content */
+        .popup-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 3; /* Set a higher z-index for the content to ensure it's on top */
+        }
+
+
+        {% comment %} serices {% endcomment %}
+        /* Add custom CSS for the scrollbar */
+        .pricing_table_plan.scrollable-content {
+            height: 150px; /* Adjust the height as needed */
+            overflow: auto;
+            scrollbar-width: thin; /* Firefox */
+        }
+
+        .pricing_table_plan.scrollable-content::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
+        }
+
+        .pricing_table_plan.scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Track color */
+        }
+
+        .pricing_table_plan.scrollable-content::-webkit-scrollbar-thumb {
+            background-color: #888; /* Thumb color */
+            border-radius: 4px; /* Rounded corners for the thumb */
+        }
+
+        .pricing_table_plan.scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Thumb color on hover */
+        }
+
+        /* Adjust the height of the header and button */
+        .pricing_table_header, .btn {
+            height: 50px; /* Adjust the height as needed */
+            line-height: 50px; /* Vertically center the content */
+        }
+
+        /* Adjust font size for title and list items */
+        .title, .pricing_table_plan ul li {
+            font-size: 14px; /* Adjust the font size as needed */
+        }
+
+        /* Adjust icon size */
+        .fa {
+            font-size: 24px; /* Adjust the icon size as needed */
+        }
+
+        {% comment %} scroll serives {% endcomment %}
+        .pricing_table{
+            color:#fff;
+            margin:10px 0;
+            background:#555;
+            text-align: center;
+            transition: all 0.30s linear 0s;
+        }
+        .pricing_table:hover{
+            background: #46B8DA;
+        }
+        .pricing_table.active,
+        .pricing_table .pricing_table_plan .btn-info.active{
+            background: #46B8DA;
+        }
+        .pricing_table:hover .pricing_table_plan .btn-info{
+            background:#46B8DA;
+        }
+        .pricing_table_header{
+            padding:40px;
+        }
+        .pricing_table_header > i{
+            display: block;
+            font-size:40px;
+        }
+        .pricing_table_header .title{
+            display:block;
+            text-transform: capitalize;
+        }
+        .pricing_table_header .price-plan{
+            display:block;
+        }
+        .pricing_table_header .price-plan i{
+            font-size:16px;
+        }
+        .pricing_table_header .price{
+            font-size:40px;
+        }
+        .pricing_table_header .monthly_plan{
+            font-size:20px;
+        }
+        .pricing_table .pricing_table_plan{
+            border-top-right-radius:30px;
+            border-top-left-radius:30px;
+            padding:40px 20px;
+            background:#222;
+        }
+        .pricing_table .pricing_table_plan ul{
+            margin:0 0 50px;
+            padding:0;
+        }
+        .pricing_table .pricing_table_plan ul li{
+            list-style:none;
+            margin:15px 0;
+        }
+        .pricing_table .pricing_table_plan .btn-info{
+            padding:8px 40px;
+            background: transparent;
+            transition: all 0.30s linear 0s;
+        }
+        
+    </style>
+</head>
+<body>
+
+{% comment %} <script>
+    // Get a reference to the button and the form
+    const scrollToFormButton = document.getElementById('scrollToForm');
+    const formSection = document.querySelector('.my-form');
+
+    // Add a click event listener to the button
+    scrollToFormButton.addEventListener('click', () => {
+        // Scroll to the form section when the button is clicked
+        formSection.scrollIntoView({behavior: 'smooth'});
+    });
+</script> {% endcomment %}
+<!-- Loder Start -->
+<div class="loader-wrapper">
+    <div class="loader"></div>
+    <div class="loder-section left-section"></div>
+    <div class="loder-section right-section"></div>
+</div>
+<!-- Loder End -->
+
+<!--==================================================-->
+<!-----Start Header Top Section----->
+<!--==================================================-->
+<!--Header top area-->
+<div class="header-top-area d-sm-none d-md-none d-lg-block">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="header-top-left-items">
+                    <div class="header-top-left-single-item">
+                        <a href="#">
+                            <div class="header-top-left-icon">
+									<span>
+										<i class="far fa-envelope"></i>
+										virtualmodify@gmail.com
+									</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="header-top-left-single-item">
+                        <a href="#">
+                            <div class="header-top-left-icon">
+									<span>
+										<i class="fas fa-street-view"></i>
+										Mohali, Punjab
+									</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="header-top-left-single-item">
+                        <a href="#">
+                            <div class="header-top-left-icon">
+									<span>
+										<i class="fas fa-phone"></i>
+										+91 8957128328
+									</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="header-top-right-items text-right">
+                    <div class="header-top-right-icon-area">
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com/thevirtualmodify" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/company/virtualmodify" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/virtualmodify" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://x.com/virtualmodify" target="_blank">
+                                    <i class="fab fa-xing"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--==================================================-->
+<!-- Start itsoft Main Menu Area -->
+<!--==================================================-->
+<div id="sticky-header" class="itsoft_nav_manu d-md-none d-lg-block d-sm-none d-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="">
+                        <img src="{% static '/assets/images/logo.png' %}" alt="logo">
+                        <img src="{% static 'assets/images/logo.png'%}" alt="logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <nav class="itsoft_menu">
+                    <ul class="nav_scroll">
+                        <li>
+                            <a href="">Home<span><i
+                                    class="fas fa-angle-right"></i></span></a>
+                            
+
+                        <li>
+                            <a href="#">Company<i class="fas fa-angle-down"></i><span><i class="fas fa-angle-right"></i></span></a>
+                            <ul class="sub-menu">
+                                <!--									<li><a href="#about">About</a></li>-->
+                                <li><a href="#about">About Us</a></li>
+                                <li><a href="#services">Our Services </a></li>
+                                <li><a href="#ourteam">Our Team </a></li>
+                                <li><a href="#contactform">Contact Us </a></li>
+                                <li><a href="#pricingtable">Pricing </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">Services<i class="fas fa-angle-down"></i><span><i
+                                    class="fas fa-angle-right"></i></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="#digitalmarketing">Digital Marketing</a></li>
+                                <li><a href="#webdevelopment">Web Development</a></li>
+                                <li><a href="#musicmarketing">Music Marketing</a></li>
+                            </ul>
+                        </li>
+
+                        {% comment %} <li>
+                            <a href="#">Project<i class="fas fa-angle-down"></i><span><i class="fas fa-angle-right"></i></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="portfolio-2-column.html">Portfolio-2 Column</a></li>
+                                <li><a href="portfolio-2-column-full.html">Portfolio-2Column Full</a></li>
+                                <li><a href="portfolio-3-column.html">Portfolio-3 Column</a></li>
+                                <li><a href="portfolio-3-column-full.html">Portfolio-3Column Full</a></li>
+                                <li><a href="portfolio-4-column.html">Portfolio-4 Column</a></li>
+                                <li><a href="portfolio-4-column-full.html">Portfolio-4Column Full</a></li>
+                            </ul>
+                        </li> {% endcomment %}
+
+                        {% comment %} <li>
+                            <a href="#">Blog<i class="fas fa-angle-down"></i><span><i
+                                    class="fas fa-angle-right"></i></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="blog-grid.html">Blog grid</a></li>
+                                <li><a href="blog-list.html">Blog List</a></li>
+                                <li><a href="blog-2-column.html">Blog-2 Column</a></li>
+                            </ul>
+                        </li> {% endcomment %}
+                        {% comment %} <li><a href="#contactform">Contact</a></li> {% endcomment %}
+                    </ul>
+                    <div class="nav-btn  d-sm-none d-md-none d-lg-inline-block">
+                        <a href="#contactform">Get Consultant</a>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ITsoft Mobile Menu Area -->
+<div class="mobile-menu-area d-sm-block d-md-block d-lg-none ">
+    <div class="mobile-menu">
+        <nav class="itsoft_menu">
+            <ul class="nav_scroll">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">Company</a>
+                    <ul class="sub-menu">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Our Services </a></li>
+                        <li><a href="#ourteam">Our Team </a></li>
+                        <li><a href="#contactform">Contact Us </a></li>
+                        <li><a href="#pricingtable">Pricing </a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="#">Services</a>
+                    <ul class="sub-menu">
+                        <li><a href="#digitalmarketing">Digital Marketing</a></li>
+                        <li><a href="#webdevelopment">Web Development</a></li>
+                        <li><a href="#musicmarketing">Music Marketing</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contactform">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--==================================================-->
+<!-----Start Header Slider Section----->
+<!--===================================================-->
+<div class="hero-section d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hero-content-area text-left">
+                    <h4>Secure & IT Services</h4>
+                    <h1>Excellent IT services <br>for your success</h1>
+                    <p>Pellentesque at posuere tellus phasellus scelerisque porem.</p>
+                    <div class="btn-common btn-hero">
+                        <a href="#about">Learn More <i class="fas fa-angle-right"></i></a>
+                    </div>
+                    <div class="video-icon">
+                        <a class="video-vemo-icon venobox vbox-item" data-vbtype="youtube" data-autoplay="true"
+                           href="https://www.youtube.com/watch?v=Wx48y_fOfiY"><i class="fas fa-play-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-thumb">
+            <div class="hero-thumb-inner">
+                <img src="{% static 'assets/images/hero/hero.png'%}" alt="slider-img">
+            </div>
+        </div>
+    </div>
+    <div class="hero-shape-one rotateme">
+        <img src="{% static 'assets/images/hero/hs1.png' %}" alt="shape-1">
+    </div>
+    <div class="hero-shape-two rotateme">
+        <img src="{% static 'assets/images/hero/hs2.png'%}" alt="shape-1">
+    </div>
+    <div class="hero-shape-three alltuchtopdown">
+        <img src="{% static 'assets/images/hero/hs3.png'%}" alt="shape-1">
+    </div>
+</div>
+<!--==================================================-->
+<!-----Srart About  Section----->
+<!--===================================================-->
+<div id="about" class="about-section pt-80 pb-80">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6">
+                <div class="about-thumb-section">
+                    <div class="about-single-thumb">
+                        <img src="{% static 'assets/images/about/ab1.jpg'%}" alt="about-img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="about-content-container pl-30">
+                    <div class="section-head-container">
+                        <div class="section-head">
+                            <h5>// About Company</h5>
+                            <h3>We Deal With The Aspects of</h3>
+                            <h2>Professional <span>IT Services</span></h2>
+                            <span class="section-head-bar"></span>
+                            <p> Welcome to Virtual Modify, where we transform your brand into a powerhouse of success through the perfect blend of digital marketing, music promotions, and expert branding strategies. With our innovative approach and a team of creative minds, we take your vision and turn it into reality. Explore our services and let us take your brand to new heights</p>
+                        </div>
+                    </div>
+                    <div class="about-content">
+                        <div class="single-content  pb-25 pt-25 d-flex">
+                            <div class="content-single-icon">
+                                <i class="flaticon-next-1"></i>
+                            </div>
+                            <div class="single-content-inner">
+                                <h5 class="inner-content-title pb-15">User Experience</h5>
+                                <p>Skilled professionals are always ready to provide reliable services to our
+                                    clients!</p>
+                            </div>
+                        </div>
+                        <div class="single-content d-flex">
+                            <div class="content-single-icon">
+                                <i class="flaticon-next"></i>
+                            </div>
+                            <div class="single-content-inner">
+                                <h5 class="inner-content-title pb-15">Quick Support</h5>
+                                <p>Instant assistance just a click away.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Container for web development -->
+<div class="popup-container" id="popupweb">
+    <div class="popup-content">
+        <p>This is the popup content for web services</p>
+        <a href="#" id="close-popupweb">Close</a>
+    </div>
+</div>
+<!-- Popup Container for music -->
+<div class="popup-container" id="popupmusic">
+    <div class="popup-content">
+        <p>This is the popup content for the music services</p>
+        <a href="#" id="close-popupmusic">Close</a>
+    </div>
+</div>
+<!-- Popup Container for digital -->
+<div class="popup-container" id="popupdigital">
+    <div class="popup-content">
+        <p>This is the popup content for the musci services</p>
+        <a href="#" id="close-popupdigital">Close</a>
+    </div>
+</div>
+
+<!-- Popup Container for uxui -->
+<div class="popup-container" id="popupuxui">
+    <div class="popup-content">
+        <p>This is the popup content for the musci services</p>
+        <a href="#" id="close-popupuxui">Close</a>
+    </div>
+</div>
+
+
+
+<!--==================================================-->
+<!-----Start Service Section----->
+<!--===================================================-->
+<div id="services" class="services-section pt-70 pb-80">
+    <div class="container">
+        <div class="section-head pb-65">
+            <div class="row align-items-center">
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div class="section-title">
+                        <h5>// OUR SERVICES</h5>
+                        <h3>What We Provide</h3>
+                    </div>
+                </div>
+                {% comment %} <div class="col-sm-12 col-md-12 col-lg-8">
+                    <div class="section-head-content">
+                        <p class="pt-0 pb-0">Aliquam sodales justo sit amet urna auctor scelerisquinterdum leo anet
+                            tempus enim and esent egetis hendrerit vel nibh vitaeornar sem velit aliquam facilisivitae
+                            finibus risus feslin is hendrerit vel nibh vitae ornar uspendisse consequat quis sem</p>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="owl-carousel service-carousel">
+                
+                <div class="services-carousel-single-item ml-15 mr-15">
+                    <div class="services-carousel-thumb">
+                        <img src="{% static 'assets/images/services/svs2.jpg'%}" alt="carousel-img">
+                    </div>
+                    <div class="services-carousel-icon">
+                        <i class="flaticon-mail"></i>
+                    </div>
+                    <div class="services-content-section">
+                        <div class="services-content-title">
+                            <h2>Music Promotions</h2>
+                        </div>
+                        <div class="services-content">
+                            <p>Unlock the universal language of music with our promotion services for artists and labels.</p>
+                        </div>
+                        <div class="services-content-btn">
+                            <a href="#" id="read-more-link-music"> Read More
+                                <i class="fas fa-angle-right"></i>
+                                <span><i class="fas fa-long-arrow-alt-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="services-carousel-single-item ml-15 mr-15">
+                    <div class="services-carousel-thumb">
+                        <img src="{% static 'assets/images/services/svs3.jpg'%}" alt="carousel-img">
+                    </div>
+                    <div class="services-carousel-icon">
+                        <i class="flaticon-system"></i>
+                    </div>
+                    <div class="services-content-section">
+                        <div class="services-content-title">
+                            <h2>Web Development</h2>
+                        </div>
+                        <div class="services-content">
+                            <p>Our team creates stunning, high-performing websites with 
+                                <br>modern tech.</p>
+                        </div>
+                        <div class="services-content-btn">
+                            <a href="#" id="read-more-link-web"> Read More
+                                <i class="fas fa-angle-right"></i>
+                                <span><i class="fas fa-long-arrow-alt-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-carousel-single-item ml-15 mr-15">
+                    <div class="services-carousel-thumb">
+                        <img src="{% static 'assets/images/services/svs4.jpg'%}" alt="carousel-img">
+
+                    </div>
+                    <div class="services-carousel-icon">
+                        <i class="flaticon-business-and-finance"></i>
+                    </div>
+                    <div class="services-content-section">
+                        <div class="services-content-title">
+                            <h2>UX/UI Design</h2>
+                        </div>
+                        <div class="services-content">
+                            <p>Elevate user experiences with our expert UX/UI design <br>services.</p>
+                        </div>
+                        <div class="services-content-btn">
+                            <a href="#" id="read-more-link-uxui"> Read More
+                                <i class="fas fa-angle-right"></i>
+                                <span><i class="fas fa-long-arrow-alt-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-carousel-single-item ml-15 mr-15">
+                    <div class="services-carousel-thumb">
+                        <img src="{% static 'assets/images/services/svs1.jpg'%}" alt="carousel-img">
+                    </div>
+                    <div class="services-carousel-icon">
+                        <i class="flaticon-briefcase"></i>
+                    </div>
+                    <div class="services-content-section">
+                        <div class="services-content-title">
+                            <h2>Digital Marketing</h2>
+                        </div>
+                        <div class="services-content">
+                            <p>In the digital age, our experts enhance online visibility and engagement through strategies.</p>
+                        </div>
+                        <div class="services-content-btn">
+                            <a href="#" id="read-more-link-digital"> Read More
+                                <i class="fas fa-angle-right"></i>
+                                <span><i class="fas fa-long-arrow-alt-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} popup js {% endcomment %}
+<script type="text/javascript" src="{% static 'assets/js/popper.js' %}"></script>
+
+
+
+<!--==================================================-->
+<!----START WHY CHOOSE US Section----->
+<!--===================================================-->
+<div class="choose-us-section pt-75 pb-70">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="choose-us-thumb">
+                    <img src="{% static 'assets/images/choose-us/ch1.png'%}" alt="choose-us">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="choose-us-content-section pl-35">
+                    <div class="section-head-container">
+                        <div class="section-head">
+                            <h5>// Why Choose Us</h5>
+                            <h3 class="text-black">Some Of Reason For Choose </h3>
+                            <h2 class="text-black">Our <span>IT Solutions</span></h2>
+                            <span class="section-head-bar"></span>
+                            <p style="color: black;"> At Virtual Modify, we believe that your success is our success. 
+                                Let's embark on this journey together and transform your brand into a story of triumph.</p>
+                        </div>
+                    </div>
+                    <div class="choose-us-content-container">
+                        <div class="single-content  pb-25  pt-35 d-flex">
+                            <div class="content-single-icon">
+                                <i class="flaticon-process"></i>
+                            </div>
+                            <div class="single-content-inner">
+                                <h5 class="inner-content-title pb-15 text-black">Experienced Team</h5>
+                                <p style="color: black;">Our team comprises professionals with years of experience in their respective fields.</p>
+                            </div>
+                        </div>
+                        <div class="single-content  pb-25 d-flex">
+                            <div class="content-single-icon">
+                                <i class="flaticon-system"></i>
+                            </div>
+                            <div class="single-content-inner">
+                                <h5 class="inner-content-title pb-15 text-black"> Tailored Solutions</h5>
+                                <p style="color: black;">We understand that every client is unique, and we customize our services to meet your specific needs.</p>
+                            </div>
+                        </div>
+                        <div class="single-content  pb-25 d-flex">
+                            <div class="content-single-icon">
+                                <i class="flaticon-next-1"></i>
+                            </div>
+                            <div class="single-content-inner">
+                                <h5 class="inner-content-title pb-15 text-black">Proven Results</h5>
+                                <p style="color: black;">We have a track record of delivering exceptional results for our clients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==================================================-->
+<!----START TEAM Section----->
+<!--===================================================-->
+<!--	<div class="team-section-head pt-75">-->
+<!--		<div class="container">-->
+<!--			<div class="section-head pb-65">-->
+<!--				<div class="row align-items-center">-->
+<!--					<div class="col-sm-12 col-md-12 col-lg-4">-->
+<!--						<div class="section-title pb-10">-->
+<!--							<h5>// Professional Team</h5>-->
+<!--							<h3>Our Dedicated Team</h3>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="col-sm-12 col-md-12 col-lg-8">-->
+<!--						<div class="section-head-content">-->
+<!--							<p class="pt-0 pb-0">Aliquam sodales justo sit amet urna auctor scelerisquinterdum leo anet tempus enim and esent egetis hendrerit vel nibh vitaeornar sem velit aliquam facilisivitae finibus risus feslin is hendrerit vel nibh vitae ornar uspendisse consequat quis sem</p>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--	<div class="team-section">-->
+<!--		<div class="container">-->
+<!--			<div class="row">-->
+<!--				<div class="col-sm-12 col-md-6 col-lg-4">-->
+<!--					<div class="single-team-member">-->
+<!--						<div class="team-member-thumb">-->
+<!--							<img src="assets/images/team/tm1.png" alt="Team">-->
+<!--						</div>-->
+<!--						<div class="team-member-social-icon">-->
+<!--							<ul>-->
+<!--								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
+<!--								<li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
+<!--								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
+<!--							</ul>-->
+<!--						</div>-->
+<!--						<div class="team-member-intro-section">-->
+<!--							<h2>Angel Zara</h2>-->
+<!--							<p>Migration Agent</p>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="col-sm-12 col-md-6 col-lg-4">-->
+<!--					<div class="single-team-member">-->
+<!--						<div class="team-member-thumb">-->
+<!--							<img src="assets/images/team/tm2.png" alt="Team">-->
+<!--						</div>-->
+<!--						<div class="team-member-social-icon">-->
+<!--							<ul>-->
+<!--								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
+<!--								<li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
+<!--								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
+<!--							</ul>-->
+<!--						</div>-->
+<!--						<div class="team-member-intro-section">-->
+<!--							<h2>Shene Watsan</h2>-->
+<!--							<p>Visa Director</p>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="col-sm-12 col-md-6 col-lg-4">-->
+<!--					<div class="single-team-member">-->
+<!--						<div class="team-member-thumb">-->
+<!--							<img src="assets/images/team/tm3.png" alt="Team">-->
+<!--						</div>-->
+<!--						<div class="team-member-social-icon">-->
+<!--							<ul>-->
+<!--								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
+<!--								<li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
+<!--								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
+<!--							</ul>-->
+<!--						</div>-->
+<!--						<div class="team-member-intro-section">-->
+<!--							<h2>Fahmida Haque</h2>-->
+<!--							<p>Co-Founder</p>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!-- Pricing -->
+<div id="pricingtable">
+    {% comment %} DIGITAL MARKETING SECTION {% endcomment %}
+    <section id="digitalmarketing" class="section-4 plans">
+        <div  class="container">
+            <div class="row text-center intro">
+                <div class="col-12">
+                    <h2><span class="featured">PRICING TABLE</span></h2>
+                </div>
+                <div>
+                    <h3><span class="featured">&nbsp DIGITAL MARKETING</span></h3>
+                </div>
+            </div>
+            <div class="row justify-content-center text-center items">
+                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Silver Package</h4>
+                        <span class="price">
+                                <i>Rs.</i>8,000<span class="plan"> or </span>
+                                <i>$</i>150<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Social Media Management<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 15 posts, 4 reels and stories on 3 Social Media platforms.<br>&#x2022; Content Creation & Repurposing<br>&#x2022; Monitor & Respond to comments/messages</h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Content Creation<br><h4
+                                        style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 2 Blog-posts/month<br>&#x2022; Basic keyword research<br>&#x2022; SEO Optimiztion<br>&#x2022; 15 Graphics for social media posts.</h4></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Email Marketting<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 2 Email Campaigns/month<br>&#x2022; List Management & Segmentation<br>&#x2022; Basic A/B Testing</h4></span>
+                            </li>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Monthly Analytics Report<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; Compile Performance Metrics<br>&#x2022; Insigts & Recommendation for Improvement.<br><br><br></h4></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Gold Package</h4>
+                        <span class="price">
+                                <i>Rs.</i>12,000<span class="plan"> or </span>
+                                <i>$</i>200<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Social Media Management<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 20 posts, 6 reels and stories on 3 Social Media platforms.<br>&#x2022; Content Creation & Repurposing<br>&#x2022; Monitor & Respond to comments/messages</h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Content Creation<br><h4
+                                        style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 4 Blog-posts/month<br>&#x2022; Basic keyword research<br>&#x2022; SEO Optimiztion<br>&#x2022; 20 Graphics for social media posts.</h4></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Email Marketting<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 4 Email Campaigns/month<br>&#x2022; List Management & Segmentation<br>&#x2022; Basic A/B Testing</h4></span>
+                            </li>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Monthly Analytics Report<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; Compile Performance Metrics<br>&#x2022; Insigts & Recommendation for Improvement.<br><br><br></h4></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Platinum Package</h4>
+                        <span class="price">
+                                <i>Rs.</i>15,000<span class="plan"> or </span>
+                                <i>$</i>250<span class="plan"></span>
+
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Social Media Management<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 30 posts, 10 reels and stories on 4-5 platforms<br>&#x2022; Advanced Content Creation, videos, infographics etc.<br>&#x2022; Social Listening & Sentiment Analysis.</h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Content Creation<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 8 Blog-posts/month<br>&#x2022; Guest Post outreach & Collaboration<br>&#x2022; Leadership content development<br>&#x2022; 30 Graphics for social media posts.</h4></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Email Marketting Automation<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 5 Email & implement automated drip campaign<br>&#x2022; Advance Segmentation & Behaviour Triggered Emails.<br>&#x2022; In-depth A/B testing & optimization.</h4></span>
+                            </li>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>Monthly Analytics Report<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; Monthly report with actionable insights<br>&#x2022; Bi-monthly strategy session to align with business goals.</h4></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    {% comment %} WEB DEVELOPMENT PRICE SECTION {% endcomment %}
+    <section id="webdevelopment" class="section-4 plans">
+        <div  class="container">
+            <div class="row text-center intro">
+                <div>
+                    <h3><span class="featured">&nbsp WEB DEVELOPMENT</span></h3>
+                </div>
+            </div>
+            <div class="row justify-content-center text-center items">
+                <div class="col-6 col-md-4 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Basic</h4>
+                        <span class="price">
+                                <i>Rs.</i>5,999<span class="plan"> or </span>
+                                <i>$</i>100<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>INCLUDES<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 1 Free Domain<br>&#x2022; 1 year free web hosting<br>&#x2022; 1 Design concept<br>&#x2022; 100% Responsive<br>&#x2022; Dyanmic pages upto 4<br>&#x2022; 1 year free business<br>Email Id<br>&#x2022; SEO Ready Website<br><br><br><br><br><br></h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Classic</h4>
+                        <span class="price">
+                                <i>Rs.</i>7,999<span class="plan"> or </span>
+                                <i>$</i>120<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>INCLUDES<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 1 Free Domain<br>&#x2022; 1 year free web hosting<br>&#x2022; 2 Design concept<br>&#x2022; 100% Responsive<br>&#x2022; Dyanmic pages upto 5<br>&#x2022; 1 year free business<br>Email Id<br>&#x2022; SEO Ready Website<br><br><br><br><br><br></h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Premium Plan</h4>
+                        <span class="price">
+                                <i>Rs.</i>14,999<span class="plan"> or </span>
+                                <i>$</i>250<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>INCLUDES<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 1 Free Domain<br>&#x2022; 1 year free web hosting<br>&#x2022; C-Panel Dashboard<br>&#x2022; Linked with Payment Gateway<br>&#x2022; 2 Design concept<br>&#x2022; 100% Responsive<br>&#x2022; Dyanmic pages upto 12<br>&#x2022; 1 year free business<br>Email Id<br>&#x2022; SEO Ready Website<br>&#x2022; Social Media Integration<br>&#x2022; Live Chat + Whatsapp Enquiry<br>&#x2022; Unlimited Revisions</h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                        </ul>
+                    </div>
+                </div><div><br></div>
+                <div class="col-6 col-md-4 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Single Page Basic</h4>
+                        <span class="price">
+                                <i>Rs.</i>3,999<span class="plan"> or </span>
+                                <i>$</i>70<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>INCLUDES<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 1 Free Domain<br>&#x2022; 1 year free web hosting<br>&#x2022; 1 Design concept<br>&#x2022; 100% Responsive<br>&#x2022; Single Page<br>&#x2022; SEO Ready Website<br><br><br><br><br><br><br><br></h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Single Page Advance</h4>
+                        <span class="price">
+                                <i>Rs.</i>6,999<span class="plan"> or </span>
+                                <i>$</i>110<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>INCLUDES<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 1 Free Domain<br>&#x2022; 1 year free web hosting<br>&#x2022; 2 Design concept<br>&#x2022; 100% Responsive<br>&#x2022; Single Page<br>&#x2022; 1 year free business<br>Email Id<br>&#x2022; SEO Ready Website<br>&#x2022; Social Media Integration<br>&#x2022; Live Chat + Whatsapp Enquiry<br>&#x2022; Unlimited Revisions<br><br><br></h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Single Page Premium</h4>
+                        <span class="price">
+                                <i>Rs.</i>12,999<span class="plan"> or </span>
+                                <i>$</i>200<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span>INCLUDES<br><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; 1 Free Domain<br>&#x2022; 1 year free web hosting<br>&#x2022; C-Panel Dashboard<br>&#x2022; Linked With Payment Gateway<br>&#x2022; 2 Design concept<br>&#x2022; 100% Responsive<br>&#x2022; Single Page<br>&#x2022; 1 year free business<br>Email Id<br>&#x2022; SEO Ready Website<br>&#x2022; Social Media Integration<br>&#x2022; Live Chat + Whatsapp Enquiry<br>&#x2022; Unlimited Revisions</h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </section>
+    {% comment %} music production services {% endcomment %}
+    <section id="musicmarketing" class="section-4 plans">
+        <div  class="container">
+            <div class="row text-center intro">
+                <div>
+                    <h3><span class="featured">&nbsp MUSIC MARKETING</span></h3>
+                </div>
+            </div>
+            <div class="row justify-content-center text-center items">
+                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Silver Package</h4>
+                        <span class="price">
+                                <i>Rs.</i>8,000<span class="plan"> or </span>
+                                <i>$</i>150<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; Social Media Promotion(2 platforms)<br>&#x2022; Music PR and Outreach (1 press release)<br>&#x2022; Basic Spotify Playlist Placement<br>&#x2022;Monthly Performance Analytics Report<br>&#x2022;Email support<br>&nbsp<br>&nbsp<br>&nbsp<br>&nbsp</h4></span>
+                                <!--                                <i class="icon-min m-0 fas fa-check text-right"></i>-->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Gold Package</h4>
+                        <span class="price">
+                                <i>Rs.</i>12,000<span class="plan"> or </span>
+                                <i>$</i>165<span class="plan"></span>
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; Social Media Promotion(3 platforms)<br>&#x2022; Music PR and Outreach (2 press release)<br>&#x2022; Standard Spotify Playlist Placement<br>&#x2022;Youtube Video Promotion (1 video)<br>&#x2022;Monthly Performance Analytics Report<br>&#x2022;Bi-Weekly Consultation Calls<br>&#x2022;Email & Phone Support<br>&nbsp<br>&nbsp</h4></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
+                    <div data-aos="fade-up" class="card">
+                        <a href="#contactform" class="choose-plan"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
+                        <i class="icon icon-rocket"></i>
+                        <h4>Platinum Package</h4>
+                        <span class="price">
+                                <i>Rs.</i>25,000<span class="plan"> or </span>
+                                <i>$</i>345<span class="plan"></span>
+
+                            </span>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+                                <span><h4 style="color: #117a8b; font-family: 'Georgia ', Serif; font-size: 14px;">&#x2022; Social Media Promotion(4 platforms)<br>&#x2022; Music PR and Outreach (4 press release)<br>&#x2022; Premium Spotify Playlist Placement<br>&#x2022;Youtube Video Promotion (2 video)<br>&#x2022;SoundCloud Promotion<br>&#x2022;Monthly Performance Analytics Report<br>&#x2022;Weekly Consultation Calls<br>&#x2022;24/7 Email & Phone Support<br>&#x2022;Dedicated Account Manager</h4></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+<!--==================================================-->
+<!----START Appointment Section----->
+<!--===================================================-->
+<div class="appointment-section pt-75 pb-75">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="appointment-section-thumb">
+                    <img src="{% static 'assets/images/consult/cnst1.jpg'%}" alt="appointment">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="appointment-content-section pt-40 pb-30 pl-50 pr-50">
+                    <div class="appointment-content">
+                        <h3>Request Free Consultation</h3>
+                        <p class="mt-0 pb-10">Get in touch and discover how we can help. We aim to be in touch for a
+                            consultation </p>
+                    </div>
+                    <div  id="contactform" class="appointment-form-section my-form">
+                        <form action="analyze" method="POST" id="dreamit-form"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form_box mb-30">
+                                        <input class='field' type="text" name="name" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form_box mb-30">
+                                        <input class='field' type="email" name="email" placeholder="Email Address">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form_box mb-30">
+                                        <input class='field' type="number" name="phone" placeholder="Phone Number">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form_box mb-30">
+                                        <textarea class='field' name="message" id="message" cols="30" rows="10"
+                                                  placeholder="Your Message"></textarea>
+                                    </div>
+                                    <div class="quote_btn text_center">
+                                        <button class="btn" type="submit">Send Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="status"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==================================================-->
+<!---- START Case study Section----->
+<!--===================================================-->
+<div class="section-head style-2  pt-75 pb-60 mb-15">
+    <div class="container">
+        <div class="row">
+            <div class=" col-sm-12 col-md-12 col-lg-5">
+                <div class="section-title">
+                    <h5 class="text-white">// Our Case Study</h5>
+                    <h3 class="text-white">Introduce Our Projects</h3>
+                </div>
+            </div>
+            <div class=" col-sm-12 col-md-12 col-lg-7">
+                <div class="section-head-content">
+                    <p class="pt-0 pb-0 text-white">Software development outsourcing is just a tool to achieve business
+                        goals. But there is no way to get worthwhile results without cooperation and trust between a
+                        client company.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--start Case Study section Bod-->
+<div class="case-study-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="case-study_carousel owl-carousel">
+                <div class="col-md-12">
+                    <div class="case-study-single-item">
+                        <div class="case-study-thumb">
+                            <img src="{% static 'assets/images/case-study/pd1.jpg'%}" alt="">
+                            <div class="case-study-content">
+                                <h2><a href="case-study-details.html">Product Design</a></h2>
+                                <span class="catagory-item"> Branding</span>
+                                <span class="catagory-item"> Development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="case-study-single-item">
+                        <div class="case-study-thumb">
+                            <img src="{% static 'assets/images/case-study/pd2.jpg'%}" alt="">
+                            <div class="case-study-content">
+                                <h2><a href="case-study-details.html">Research Now</a></h2>
+                                <span class="catagory-item"> Branding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="case-study-single-item">
+                        <div class="case-study-thumb">
+                            <img src="{% static 'assets/images/case-study/pd3.jpg'%}" alt="">
+                            <div class="case-study-content">
+                                <h2><a href="case-study-details.html">Tech Conference</a></h2>
+                                <span class="catagory-item"> Development</span>
+                                <span class="catagory-item"> Branding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="case-study-single-item">
+                        <div class="case-study-thumb">
+                            <img src="{% static 'assets/images/case-study/pd4.jpg'%}" alt="">
+                            <div class="case-study-content">
+                                <h2><a href="case-study-details.html">Growth Strategies</a></h2>
+                                <span class="catagory-item"> Development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="case-study-single-item">
+                        <div class="case-study-thumb">
+                            <img src="{% static 'assets/images/case-study/pd5.jpg'%}" alt="">
+                            <div class="case-study-content">
+                                <h2><a href="case-study-details.html">Innovative Interfaces</a></h2>
+                                <span class="catagory-item"> Development</span>
+                                <span class="catagory-item"> Branding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="case-study-single-item">
+                        <div class="case-study-thumb">
+                            <img src="{% static 'assets/images/case-study/pd6.jpg'%}" alt="">
+                            <div class="case-study-content">
+                                <h2><a href="case-study-details.html">Creative Mind</a></h2>
+                                <span class="catagory-item"> Branding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==================================================-->
+<!----START PROCESS Section----->
+<!--===================================================-->
+<div class="process-section pt-70 pb-70">
+    <div class="container">
+        <div class="section-head pb-65">
+            <div class="section-head">
+                <h5>// How It Works</h5>
+                <h2 class="text-white"> Check Out Our <span> Work Process </span></h2>
+                <span class="section-head-bar-2"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="process-single-item">
+                    <div class="process-single-thumb">
+                        <img src="{% static 'assets/images/process/pcs1.jpg'%}" alt="Work-Process">
+                        <div class="process-number">
+                            <span>01</span>
+                        </div>
+                    </div>
+                    <div class="process-content">
+                        <div class="process-content-title">
+                            <h4>Choose a Service</h4>
+                        </div>
+                        <p>Aute irure dolor reprehenderit velit esse cillum dolore fugiat</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="process-single-item">
+                    <div class="process-single-thumb">
+                        <img src="{% static 'assets/images/process/pcs2.jpg'%}" alt="Work-Process">
+                        <div class="process-number">
+                            <span>02</span>
+                        </div>
+                    </div>
+                    <div class="process-content">
+                        <div class="process-content-title">
+                            <h4>Request a Meeting</h4>
+                        </div>
+                        <p>Aute irure dolor reprehenderit velit esse cillum dolore fugiat</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="process-single-item">
+                    <div class="process-single-thumb">
+                        <img src="{% static 'assets/images/process/pcs3.jpg'%}" alt="Work-Process">
+                        <div class="process-number">
+                            <span>03</span>
+                        </div>
+                    </div>
+                    <div class="process-content">
+                        <div class="process-content-title">
+                            <h4>Receive Custom Plan</h4>
+                        </div>
+                        <p>Aute irure dolor reprehenderit velit esse cillum dolore fugiat</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="process-single-item">
+                    <div class="process-single-thumb">
+                        <img src="{% static 'assets/images/process/pcs4.jpg'%}" alt="Work-Process">
+                        <div class="process-number">
+                            <span>04</span>
+                        </div>
+                    </div>
+                    <div class="process-content">
+                        <div class="process-content-title">
+                            <h4>Let’s Make it Happen</h4>
+                        </div>
+                        <p>Aute irure dolor reprehenderit velit esse cillum dolore fugiat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==================================================-->
+<!----START CALL-DO-ACTION Section----->
+<!--===================================================-->
+<div class="call-do-action-section pt-90 pb-220">
+    <div class="container">
+        <div class="call-do-action-video text-center mb-35">
+            <div class="video-icon video-icon-cda">
+                <a class="video-vemo-icon venobox vbox-item" data-vbtype="youtube" data-autoplay="true"
+                   href="https://www.youtube.com/watch?v=Wx48y_fOfiY"><i class="fas fa-play-circle"></i></a>
+            </div>
+        </div>
+        <div class="call-do-action-content text-center">
+            <h2 class="text-white">We Deliver Solution With The Goal Of <br><span class="sub-title"> A Trusting Relationships</span>
+            </h2>
+            <p class="text-white">Appropriate for your specific business, making it easy for you to have quality IT
+                services.</p>
+            <div class="btn-common btn-cda mt-40">
+                <a href="#">Watch More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==================================================-->
+<!----START Testimonial Section----->
+<!--===================================================-->
+<div id="ourteam" class="testimonial-section">
+    <div class="container">
+        <div class="testimonial-carousel owl-carousel">
+            <div class="testimonial-single-item">
+                <div class="testimonial-thumb">
+                    <img src="{% static 'assets/images/testimonial/tstm1.jpg'%}" alt="testimonial Img">
+                    <div class="testimonial-icon">
+                        <span><i class="fas fa-quote-left"></i></span>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-content-text">Sorem ipsum dolor sit amet there any consectetur adipisicing
+                        eliter sed do the eiusmod tempor asem incididunt ut labore dolore magna aliqua. Ut enim adern
+                        minim.</p>
+                    <h4>John Abraham</h4>
+                    <p class="testimonial-designation">Web developer</p>
+                </div>
+            </div>
+            <div class="testimonial-single-item">
+                <div class="testimonial-thumb">
+                    <img src="{% static 'assets/images/testimonial/tstm2.jpg'%}" alt="testimonial Img">
+                    <div class="testimonial-icon">
+                        <span><i class="fas fa-quote-left"></i></span>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-content-text">Sorem ipsum dolor sit amet there any consectetur adipisicing
+                        eliter sed do the eiusmod tempor asem incididunt ut labore dolore magna aliqua. Ut enim adern
+                        minim.</p>
+                    <h4>Ellen Erye </h4>
+                    <p class="testimonial-designation">Project Manager</p>
+                </div>
+            </div>
+            <div class="testimonial-single-item">
+                <div class="testimonial-thumb">
+                    <img src="{% static 'assets/images/testimonial/tstm3.jpg'%}" alt="testimonial Img">
+                    <div class="testimonial-icon">
+                        <span><i class="fas fa-quote-left"></i></span>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-content-text">Sorem ipsum dolor sit amet there any consectetur adipisicing
+                        eliter sed do the eiusmod tempor asem incididunt ut labore dolore magna aliqua. Ut enim adern
+                        minim.</p>
+                    <h4>Shene Watsan </h4>
+                    <p class="testimonial-designation">Founder</p>
+                </div>
+            </div>
+            <div class="testimonial-single-item">
+                <div class="testimonial-thumb">
+                    <img src="{% static 'assets/images/testimonial/tstm2.jpg'%}" alt="testimonial Img">
+                    <div class="testimonial-icon">
+                        <span><i class="fas fa-quote-left"></i></span>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-content-text">Sorem ipsum dolor sit amet there any consectetur adipisicing
+                        eliter sed do the eiusmod tempor asem incididunt ut labore dolore magna aliqua. Ut enim adern
+                        minim.</p>
+                    <h4>Monalysha</h4>
+                    <p class="testimonial-designation">CEO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==================================================-->
+<!----START BLOG  Section----->
+<!--===================================================-->
+{% comment %} <div class="blog-section pt-70 pb-70">
+    <div class="container">
+        <div class="section-head text-center mb-85">
+            <h5>// Our Blogs</h5>
+            <h2 class="text-white"> Resources & Latest <span> News  </span></h2>
+            <span class="section-head-bar-2"></span>
+        </div>
+        <div class="owl-carousel blog-carousel">
+            <div class="blog-single-carousel">
+                <div class="blog-thumb">
+                    <a href="#">
+                        <img src="{% static 'assets/images/blog/bg1.jpg'%}" alt="Blog img">
+                    </a>
+                    <div class="blog-meta-top">
+                        <ul>
+                            <li><a href="#">Graphics</a></li>
+                            <li><a href="#">Technology</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><a href="#">Itsoft</a></span> - <span>January 01, 2023</span>
+                    </div>
+                    <h5><a href="single-blog.html">Plan Your Project with Your Software</a></h5>
+                    <p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache. </p>
+                    <div class="blog-learn-more">
+                        <a href="single-blog.html">
+                            Read More
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-single-carousel">
+                <div class="blog-thumb">
+                    <a href="#">
+                        <img src="{% static 'assets/images/blog/bg2.jpg'%}" alt="Blog img">
+                    </a>
+                    <div class="blog-meta-top">
+                        <ul>
+                            <li><a href="#">Tips</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><a href="#">Itsoft</a></span> - <span>January 01, 2023</span>
+                    </div>
+                    <h5><a href="single-blog.html">You have a Great Business Idea?</a></h5>
+                    <p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache. </p>
+                    <div class="blog-learn-more">
+                        <a href="single-blog.html">
+                            Read More
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-single-carousel">
+                <div class="blog-thumb">
+                    <a href="#">
+                        <img src="{% static 'assets/images/blog/bg3.jpg'%}" alt="Blog img">
+                    </a>
+                    <div class="blog-meta-top">
+                        <ul>
+                            <li><a href="#">Development</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><a href="#">Itsoft</a></span> - <span>January 01, 2023</span>
+                    </div>
+                    <h5><a href="single-blog.html">How to Make Website WCAG Compliant?</a></h5>
+                    <p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache. </p>
+                    <div class="blog-learn-more">
+                        <a href="single-blog.html">
+                            Read More
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-single-carousel">
+                <div class="blog-thumb">
+                    <a href="#">
+                        <img src="{% static 'assets/images/blog/bg4.jpg'%}" alt="Blog img">
+                    </a>
+                    <div class="blog-meta-top">
+                        <ul>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Technology</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><a href="#">Itsoft</a></span> - <span>January 01, 2023</span>
+                    </div>
+                    <h5><a href="single-blog.html">The Future of Enterprise API Development</a></h5>
+                    <p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache. </p>
+                    <div class="blog-learn-more">
+                        <a href="single-blog.html">
+                            Read More
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-single-carousel">
+                <div class="blog-thumb">
+                    <a href="#">
+                        <img src="{% static 'assets/images/blog/bg5.jpg'%}" alt="Blog img">
+                    </a>
+                    <div class="blog-meta-top">
+                        <ul>
+                            <li><a href="#">Graphics</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><a href="#">Itsoft</a></span> - <span>January 01, 2023</span>
+                    </div>
+                    <h5><a href="single-blog.html">How To Make Your iOS 13 Compatible?</a></h5>
+                    <p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache. </p>
+                    <div class="blog-learn-more">
+                        <a href="single-blog.html">
+                            Read More
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-single-carousel">
+                <div class="blog-thumb">
+                    <a href="#">
+                        <img src="{% static 'assets/images/blog/bg6.jpg'%}" alt="Blog img">
+                    </a>
+                    <div class="blog-meta-top">
+                        <ul>
+                            <li><a href="#">Tips</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><a href="#">Itsoft</a></span> - <span>January 01, 2023</span>
+                    </div>
+                    <h5><a href="single-blog.html">The Next Big Challenge for Content Marketer</a></h5>
+                    <p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache. </p>
+                    <div class="blog-learn-more">
+                        <a href="single-blog.html">
+                            Read More
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-single-carousel">
+                <div class="blog-thumb">
+                    <a href="#">
+                        <img src="{% static 'assets/images/blog/bg1.jpg'%}" alt="Blog img">
+                    </a>
+                    <div class="blog-meta-top">
+                        <ul>
+                            <li><a href="#">Design</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><a href="#">Itsoft</a></span> - <span>January 01, 2023</span>
+                    </div>
+                    <h5><a href="single-blog.html">Tackling the Changes of Retail Industry</a></h5>
+                    <p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache. </p>
+                    <div class="blog-learn-more">
+                        <a href="single-blog.html">
+                            Read More
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<!--==================================================-->
+<!-----START FOOTER SECTION----->
+<!--===================================================-->
+<div class="footer">
+    <div class="container">
+        <div class="row footer-hr">
+            <div class="col-md-6 col-lg-3">
+                <div class="widget">
+                    <div class="about-company">
+                        <div class="footer-logo">
+                            <img src="{% static 'assets/images/footer/logo2.png'%}" alt="Footer-logo">
+                        </div>
+                        <p>We are the best world Information Technology Company. Providing the highest quality.</p>
+                        <div class="footer-about-social-icon">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="widget">
+                    <div class="footer-quick-link">
+                        <div class="footer-widget-title">
+                            <h5>Quick Links</h5>
+                        </div>
+                        <div class="footer-quick-link-list">
+                            <ul>
+                                <li><a href='#about'>About Us</a></li>
+                                <li><a href="#services">Our Services</a></li>
+                                <li><a href="#ourteam">Our Team</a></li>
+                                <li><a href="#contactform">Contact Us</a></li>
+                                <li><a href="#pricingtable">Pricing</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="widget">
+                    <div class="footer-contact">
+                        <div class="footer-widget-title">
+                            <h5>Contacts</h5>
+                        </div>
+                        <p><b>Adress: </b>3b2 market, sector 60, Phase 6, Mohali Punjab, India </p>
+                        <p><b>Phone: </b> +91 89571 28328</p>
+                        <p><b>Email: </b> virtualmodify@gmail.com <br> Website: www.virtualmodify.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                {% comment %} <div class="widget">
+                    <div class="footer-popular-post ">
+                        <div class="footer-widget-title">
+                            <h5>Popular Post</h5>
+                        </div>
+                        <div class="footer-popular-single-post d-flex">
+                            <div class="single-post-img">
+                                <a href="#">
+                                    <img src="{% static 'assets/images/footer/add1.jpg'%}" alt="footer-post">
+                                </a>
+                            </div>
+                            <div class="popular-post-title">
+                                <a href="#">
+                                    <h6>Plan Your Project with Your Software </h6>
+                                </a>
+                                <p>January 01, 2023</p>
+                            </div>
+                        </div>
+                        <div class="footer-popular-single-post d-flex">
+                            <div class="single-post-img">
+                                <a href="#">
+                                    <img src="{% static 'assets/images/footer/add2.jpg'%}" alt="footer-post">
+                                </a>
+                            </div>
+                            <div class="popular-post-title">
+                                <a href="#">
+                                    <h6>You have a Great Business Idea? </h6>
+                                </a>
+                                <p>January 01, 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--==================================================-->
+<!-----start footer copyright  SECTION----->
+<!--===================================================-->
+<div class="footer-copyright-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="footer-copyright-text">
+                    <p>&copy; 2023 - all rights reserved. </p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="footer-copyright-link">
+                    <ul>
+                        <li><a href='#about'>About Us</a></li>
+                        {% comment %} <li><a href="#">Privacy Policy</a></li> {% endcomment %}
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--==================================================-->
+<!-----start fTo-Top----->
+<!--===================================================-->
+<button id="to-top">
+    <i class="fa fa-angle-up"></i>
+</button>
+
+<!-- jquery js -->
+<script type="text/javascript" src="{% static 'assets/js/vendor/jquery-3.2.1.min.js' %}"></script>
+<!-- bootstrap js -->
+<script type="text/javascript" src="{%static 'assets/js/bootstrap.min.js' %}"></script>
+<!-- carousel js -->
+<script type="text/javascript" src="{% static 'assets/js/owl.carousel.min.js'%}"></script>
+<!-- counterup js -->
+<script type="text/javascript" src="{% static 'assets/js/jquery.counterup.min.js'%}"></script>
+<!-- waypoints js -->
+<script type="text/javascript" src="{% static 'assets/js/waypoints.min.js'%}"></script>
+<!-- appear js -->
+<script type="text/javascript" src="{% static 'assets/js/jquery.appear.js'%}"></script>
+<!-- wow js -->
+<script type="text/javascript" src="{% static 'assets/js/wow.min.js'%}"></script>
+<!-- imagesloaded js -->
+<script type="text/javascript" src="{% static 'assets/js/imagesloaded.pkgd.min.js'%}"></script>
+<!-- venobox js -->
+<script type="text/javascript" src="{% static 'assets/venobox/venobox.js'%}"></script>
+<!-- ajax mail js -->
+<script type="text/javascript" src="{% static 'assets/js/ajax-mail.js'%}"></script>
+<!--  animated-text js -->
+<script type="text/javascript" src="{% static 'assets/js/animated-text.js'%}"></script>
+<!-- venobox min js -->
+<script type="text/javascript" src="{% static 'assets/venobox/venobox.min.js'%}"></script>
+<!-- isotope js -->
+<script type="text/javascript" src="{% static 'assets/js/isotope.pkgd.min.js'%}"></script>
+<!-- jquery nivo slider pack js -->
+<script type="text/javascript" src="{% static 'assets/js/jquery.nivo.slider.pack.js'%}"></script>
+<!-- jquery meanmenu js -->
+<script type="text/javascript" src="{% static 'assets/js/jquery.meanmenu.js'%}"></script>
+<!-- jquery scrollup js -->
+<script type="text/javascript" src="{% static 'assets/js/jquery.scrollUp.js'%}"></script>
+<!-- uikit js -->
+<script type="text/javascript" src="{% static 'assets/js/uikit.min.js'%}"></script>
+<!-- Jquery UI Tab JS -->
+<script type="text/javascript" src="{% static 'assets/js/jquery-ui.min.js'%}"></script>
+<!--Swiper Slider-->
+<script type="text/javascript" src="{% static 'assets/js/swiper.min.js'%}"></script>
+<!--theme js-->
+<script type="text/javascript" src="{% static 'assets/js/theme.js'%}"></script>
+<!--jquery js-->
+</body>
+</html>
