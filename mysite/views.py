@@ -7,6 +7,7 @@ from .models import MyModel
 
 # Create your views here.
 
+# home view for front page
 def home(request):
     return render(request, 'home.html', {})
 
